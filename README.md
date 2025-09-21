@@ -48,6 +48,10 @@ Each numbered report documents a specific step of the analysis and can be read s
 | 13 | [`airbnb_nyc_2023_chunk13_final_synthesis.md`](reports/airbnb_nyc_2023_chunk13_final_synthesis.md) | Final summary of insights, model performance, recommendations and limitations. |
 | — | [`airbnb_nyc_2023_medium_story.md`](reports/airbnb_nyc_2023_medium_story.md) | A narrative version suitable for a Medium article, weaving together the key findings and plots. |
 
+### Comprehensive report
+
+If you prefer to read the entire project narrative in one document, a consolidated report is available in [`COMPREHENSIVE_REPORT.md`](COMPREHENSIVE_REPORT.md).  This file stitches together all of the individual chunk reports in sequence.  The per‑chunk files remain in the `reports/` folder for modular reference.
+
 ### Images
 
 The `images/` folder contains all visualisations used throughout the reports. Notable plots include:
