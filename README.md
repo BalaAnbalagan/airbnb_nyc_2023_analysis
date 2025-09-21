@@ -32,21 +32,21 @@ Each numbered report documents a specific step of the analysis and can be read s
 
 | Chunk | File | Description |
 |---|---|---|
-| 00 | `airbnb_nyc_2023_chunk00_project_charter.md` | Project charter with objectives, CRISP‑DM plan and chunk schedule. |
-| 01 | `airbnb_nyc_2023_chunk01_business_data_understanding.md` | Business context, regulatory background and dataset scope. |
-| 02 | `airbnb_nyc_2023_chunk02_data_access_schema_audit.md` | Data loading strategy, schema inspection and missingness patterns. |
-| 03 | `airbnb_nyc_2023_chunk03_eda_univariate.md` | Univariate exploration of price, room type, reviews and other features. |
-| 04 | `airbnb_nyc_2023_chunk04_eda_bivariate_temporal.md` | Bivariate relationships, correlation matrix and temporal price trends. |
-| 05 | `airbnb_nyc_2023_chunk05_geo_eda.md` | Geospatial analysis using hexbin maps to show listing density and price variation. |
-| 06 | `airbnb_nyc_2023_chunk06_cleaning_preprocessing.md` | Data cleaning, handling of missing values, imputation and transformation. |
-| 07 | `airbnb_nyc_2023_chunk07_outlier_analysis.md` | Outlier detection and capping strategy for price and minimum nights. |
-| 08 | `airbnb_nyc_2023_chunk08_feature_engineering.md` | Creation of new features (e.g. log transforms, bins) and winsorisation. |
-| 09 | `airbnb_nyc_2023_chunk09_feature_selection.md` | Evaluation of features via correlation, mutual information and random forest importance. |
-| 10 | `airbnb_nyc_2023_chunk10_modeling_linear.md` | Baseline and linear regression models; comparison of raw vs log‑price targets. |
-| 11 | `airbnb_nyc_2023_chunk11_tree_ensembles.md` | Non‑linear models (Random Forest, Gradient Boosting) and feature importances. |
-| 12 | `airbnb_nyc_2023_chunk12_clustering.md` | K‑Means and DBSCAN clustering to segment listings and neighbourhoods. |
-| 13 | `airbnb_nyc_2023_chunk13_final_synthesis.md` | Final summary of insights, model performance, recommendations and limitations. |
-| — | `airbnb_nyc_2023_medium_story.md` | A narrative version suitable for a Medium article, weaving together the key findings and plots. |
+| 00 | [`airbnb_nyc_2023_chunk00_project_charter.md`](reports/airbnb_nyc_2023_chunk00_project_charter.md) | Project charter with objectives, CRISP‑DM plan and chunk schedule. |
+| 01 | [`airbnb_nyc_2023_chunk01_business_data_understanding.md`](reports/airbnb_nyc_2023_chunk01_business_data_understanding.md) | Business context, regulatory background and dataset scope. |
+| 02 | [`airbnb_nyc_2023_chunk02_data_access_schema_audit.md`](reports/airbnb_nyc_2023_chunk02_data_access_schema_audit.md) | Data loading strategy, schema inspection and missingness patterns. |
+| 03 | [`airbnb_nyc_2023_chunk03_eda_univariate.md`](reports/airbnb_nyc_2023_chunk03_eda_univariate.md) | Univariate exploration of price, room type, reviews and other features. |
+| 04 | [`airbnb_nyc_2023_chunk04_eda_bivariate_temporal.md`](reports/airbnb_nyc_2023_chunk04_eda_bivariate_temporal.md) | Bivariate relationships, correlation matrix and temporal price trends. |
+| 05 | [`airbnb_nyc_2023_chunk05_geo_eda.md`](reports/airbnb_nyc_2023_chunk05_geo_eda.md) | Geospatial analysis using hexbin maps to show listing density and price variation. |
+| 06 | [`airbnb_nyc_2023_chunk06_cleaning_preprocessing.md`](reports/airbnb_nyc_2023_chunk06_cleaning_preprocessing.md) | Data cleaning, handling of missing values, imputation and transformation. |
+| 07 | [`airbnb_nyc_2023_chunk07_outlier_analysis.md`](reports/airbnb_nyc_2023_chunk07_outlier_analysis.md) | Outlier detection and capping strategy for price and minimum nights. |
+| 08 | [`airbnb_nyc_2023_chunk08_feature_engineering.md`](reports/airbnb_nyc_2023_chunk08_feature_engineering.md) | Creation of new features (e.g. log transforms, bins) and winsorisation. |
+| 09 | [`airbnb_nyc_2023_chunk09_feature_selection.md`](reports/airbnb_nyc_2023_chunk09_feature_selection.md) | Evaluation of features via correlation, mutual information and random forest importance. |
+| 10 | [`airbnb_nyc_2023_chunk10_modeling_linear.md`](reports/airbnb_nyc_2023_chunk10_modeling_linear.md) | Baseline and linear regression models; comparison of raw vs log‑price targets. |
+| 11 | [`airbnb_nyc_2023_chunk11_tree_ensembles.md`](reports/airbnb_nyc_2023_chunk11_tree_ensembles.md) | Non‑linear models (Random Forest, Gradient Boosting) and feature importances. |
+| 12 | [`airbnb_nyc_2023_chunk12_clustering.md`](reports/airbnb_nyc_2023_chunk12_clustering.md) | K‑Means and DBSCAN clustering to segment listings and neighbourhoods. |
+| 13 | [`airbnb_nyc_2023_chunk13_final_synthesis.md`](reports/airbnb_nyc_2023_chunk13_final_synthesis.md) | Final summary of insights, model performance, recommendations and limitations. |
+| — | [`airbnb_nyc_2023_medium_story.md`](reports/airbnb_nyc_2023_medium_story.md) | A narrative version suitable for a Medium article, weaving together the key findings and plots. |
 
 ### Images
 
