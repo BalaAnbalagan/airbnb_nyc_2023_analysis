@@ -235,7 +235,8 @@ The table below summarises each column’s data type, number of missing values, 
 
 To visualise patterns of missing values, we plotted a **missingness heatmap** on a random sample of 5 000 rows (reduces rendering time).  Each row represents a listing and each column a feature; white bands indicate missing entries.
 
-![Missingness heatmap (sample)]({{file:file-L3RFqnYnnDyB5YZbbuUzwy}})
+![Missingness heatmap (sample)](images/missingness_heatmap.png)
+
 
 The heatmap shows that missingness is concentrated in four columns—`price`, `last_review`, `reviews_per_month` and `license`—while all other fields are fully populated.  There is no evident row‑level pattern; missingness appears randomly distributed across listings, supporting the assumption that prices and review information are missing at random (MAR) rather than correlated with a specific subset.  However, we will conduct more formal tests before deciding on imputation strategies.
 
@@ -303,7 +304,7 @@ The target variable `price` and other numeric fields show heavy right‑skewness
 
 The histogram below (left panel) shows the raw price distribution.  Nearly half of the listings cost below \$150 per night, while a small number of luxury properties command very high rates.  The long tail justifies testing a **logarithmic transformation**: the right panel plots `log1p(price)`, which compresses extreme values and yields a more symmetric shape.  This transformation improves interpretability and will be considered when building regression models.
 
-![Histogram of price and log1p(price) distributions]({{file:file-BLVaz9sKq3R1FzYSw8sChC}})
+![Histogram of price and log1p(price) distributions](images\price_log_price_hist.png) 
 
 ### Other numeric variables
 
@@ -315,13 +316,13 @@ The histogram below (left panel) shows the raw price distribution.  Nearly half 
 
 Airbnb categorises accommodations into four room types.  The majority of NYC listings offer **entire homes or apartments** (≈53 %), while **private rooms** account for ~45 %.  Hotel and shared rooms are relatively rare.
 
-![Room type distribution]({{file:file-552KXLEQhrEq7rVFACGxKc}})
+![Room type distribution](images\room_type_distribution.png)
 
 ### Neighbourhood groups
 
 Listings cluster within the five boroughs.  Manhattan and Brooklyn together host over 80 % of listings; Queens provides 5 k listings, while the Bronx and Staten Island offer far fewer.  These counts provide context for subsequent spatial analyses.
 
-![Neighbourhood group distribution]({{file:file-PrxVNz9vq7vcPECsLMmitu}})
+![Neighbourhood group distribution](images\neighbourhood_group_distribution.png)
 
 ### Top neighbourhoods
 
@@ -366,7 +367,7 @@ This chunk extends the exploratory analysis by examining relationships between t
 
 The Pearson correlation matrix of numeric variables is visualised below.  Price shows very weak linear relationships with other numeric attributes (coefficients between −0.08 and 0.03), suggesting non‑linear or categorical drivers are more influential.  In contrast, `number_of_reviews` and `reviews_per_month` are strongly correlated (0.90) because `reviews_per_month` derives from total reviews over time.  `number_of_reviews_ltm` (reviews in the last 12 months) also correlates moderately with total reviews (0.65), highlighting collinearity among review metrics.
 
-![Correlation matrix heatmap]({{file:file-ACJWsEhVWNUc6GsD8tVLza}})
+![Correlation matrix heatmap](images\correlation_matrix.png)
 
 ### Price by room type and borough
 
@@ -376,7 +377,7 @@ Median nightly prices vary markedly by room category.  **Hotel rooms** exhibit e
 
 To visualise continuous relationships we sampled 2 000 listings (seed = 42) and plotted log‑transformed price against log‑transformed `number_of_reviews`, log‑transformed `minimum_nights` and raw `availability_365`.
 
-![Scatter plots for price vs. review count, minimum nights and availability]({{file:file-TtBRx7Z83QKGXAh3JPy1BS}})
+![Scatter plots for price vs. review count, minimum nights and availability](images\bivariate_scatter.png)
 
 * **Number of reviews** – There is no clear relationship; listings with few reviews can be either cheap or expensive.  A slight downward trend suggests that highly reviewed properties tend to have lower prices, possibly because budget listings attract more bookings.  The negative Pearson correlation (−0.03) supports this interpretation.
 * **Minimum nights** – Higher minimum stays are associated with lower nightly prices (correlation −0.08).  Long‑stay listings often target residents rather than tourists, so hosts lower nightly rates to secure extended bookings.
@@ -386,7 +387,7 @@ To visualise continuous relationships we sampled 2 000 listings (seed = 42) 
 
 Although the dataset contains only a snapshot of prices and no booking dates, the `last_review` field records when guests last reviewed each listing.  Grouping by review year shows how median price has shifted over time.  Prices were higher in 2011–2013 (median ≈\$213) but have stabilised around \$150 since 2015.  The slight dip in 2024 may reflect regulatory changes such as **New York City’s Local Law 18**, which tightened short‑term rental regulations in September 2023.  The plotted trend serves as a qualitative indicator rather than evidence of causation.
 
-![Median price by review year]({{file:file-LvieKUJouXTQaSdUxpsZFX}})
+![Median price by review year](images\price_trend_year.png)
 
 ## Decision Rationale
 
@@ -425,13 +426,13 @@ This section investigates the spatial distribution of NYC Airbnb listings and th
 
 The hexbin plot below counts the number of listings in each hexagonal cell (grid size = 50).  Darker cells indicate denser areas.  Unsurprisingly, the densest clusters appear in **Manhattan** (especially Midtown, Lower Manhattan and the East/West Villages) and **Brooklyn** (Williamsburg, Bushwick and Bedford‑Stuyvesant).  Outer boroughs like Staten Island have sparse coverage.
 
-![Listing density hexbin map]({{file:file-DVxGejgUrLMpHDKK654qDt}})
+![Listing density hexbin map](images\listing_density_hexbin.png)
 
 ## Spatial Variation in Price
 
 To visualise how price varies across the city, we aggregated price within the same hexagonal grid using the mean price (only bins with ≥5 listings to avoid unreliable estimates).  Hotter colours correspond to higher average nightly rates.  The highest‑priced areas are concentrated in Manhattan’s upscale neighbourhoods: **TriBeCa**, **SoHo**, **NoHo**, **Greenwich Village** and the **Financial District**.  Some pockets in Brooklyn (e.g., **Vinegar Hill** near the waterfront) also command premium rates.  By contrast, northern Manhattan, much of Queens and the Bronx show cooler colours, indicating lower average prices.
 
-![Average price by location (hexbin)]({{file:file-WTCbFPPtZ7NsrqQrVjAcxN}})
+![Average price by location (hexbin)](images\average_price_hexbin.png)
 
 ## Top Neighbourhoods by Median Price
 
@@ -589,7 +590,7 @@ Several features show high percentages of outliers.  However, context matters:
 
 To reduce the influence of extreme prices without discarding data, we **winsorised** the top 5 % of prices.  Specifically, prices above the 95th percentile (≈\$615) were capped at this value.  Only 1 062 listings were affected.  Mean nightly price dropped from \$447 to \$202 after capping, while the median remained \$150.  The boxplot below contrasts the raw price distribution with the capped distribution; the capped version eliminates the long right tail but preserves the interquartile range.
 
-![Boxplots comparing raw and capped price distributions]({{file:file-Cz2om3HYGger1fti98PDg3}})
+![Boxplots comparing raw and capped price distributions](images\price_boxplot_comparison.png)
 
 We retained the capped price as a new variable (`price_capped`) and computed its logarithm (`log_price_capped`).  Models can compare performance using either the original or capped price; tree‑based models are robust to outliers but linear models benefit from capping.
 
@@ -867,11 +868,11 @@ The table below summarizes model performance.  Lower RMSE/MAE and higher R² val
 * **Log transformation improves fit**: Modelling log price yields a higher R² than modelling raw price (0.574 vs. 0.507) and smaller RMSE/MAE on the log scale.  However, when exponentiating predictions back to dollars (using `exp(pred) – 1`), the resulting metrics (RMSE≈112.4, MAE≈74.0, R²≈0.47) were slightly worse than training directly on price.  This reflects the bias introduced when transforming back from log space.
 * **Residual diagnostics**: Figure 1 shows predictions versus actual values on the log scale for the OLS model.  Points broadly follow the 45‑degree line, but there is noticeable spread for high‑priced listings.  Figure 2 plots residuals against predicted values; variance increases slightly for large predictions, hinting at heteroskedasticity not fully captured by the linear model.  These patterns motivate the exploration of non‑linear models in the next chunk.
 
-![Predicted vs Actual (log-scale)]({{file:file-Aa1hJXLqm2K9KUX6at7uh3}})
+![Predicted vs Actual (log-scale)](images\pred_vs_actual_log.png)
 
 *Figure 1 – Scatter of predicted vs. actual log prices for the linear regression model.*
 
-![Residuals vs Predicted (log-scale)]({{file:file-TQrq9wM1woXng4x58fStcR}})
+![Residuals vs Predicted (log-scale)](images\residuals_vs_pred_log.png)
 
 *Figure 2 – Residuals versus predicted log prices indicate minor heteroskedasticity.*
 
@@ -960,7 +961,7 @@ We evaluated the models on the test set using RMSE, MAE and R², matching the me
 
 To understand which variables drive predictions in the random forest, we extracted **Gini‑based feature importances**.  Figure 3 plots the top ten features.  Host activity (`room_type_Private room` and `calculated_host_listings_count`), availability, and minimum nights remain the most influential predictors, consistent with the earlier mutual information analysis.  The importance of `room_type_Private room` reflects the price difference between private rooms and entire homes; the importance of `availability_365` suggests that year‑round listings command higher prices.
 
-![Random Forest Top 10 Feature Importances]({{file:file-9FACoNzD3YGf2JqapT8uDp}})
+![Random Forest Top 10 Feature Importances](images\rf_feature_importances_bar.png)
 
 *Figure 3 – Random forest feature importances for predicting `log_price_capped`.  Categorical variables are encoded (e.g., `room_type_Private room`, `neighbourhood_group_Manhattan`).*
 
@@ -1033,7 +1034,7 @@ Figure 4 presents cluster composition by borough and room type.  Cluster 2 is 
 * **DBSCAN parameters:**  We experimented with `eps` values from 0.05 to 0.4 (in standardized units) and selected `eps=0.2`, `min_samples=20`.  This configuration produced **nine clusters** and a small noise set (~199 listings).  Smaller `eps` values yielded many tiny clusters with large noise; larger values collapsed distinct neighbourhoods into a single cluster.
 * **Interpretation:**  Cluster centroids (median coordinates) indicate the approximate location of each group.  The largest cluster covers the Manhattan/Brooklyn core (latitude ~40.73, longitude ~−73.95).  Smaller clusters correspond to peripheral areas: Far Rockaway/Queens (cluster 1), Staten Island (clusters 2, 4, 7, 8) and Coney Island (clusters 3, 5, 6).  Noise points are scattered around the city.
 
-![DBSCAN Geo Clusters]({{file:file-MUweFwHGCyJf9QhGn54WbL}})
+![DBSCAN Geo Clusters](images\dbscan_geo_clusters_plot.png)
 
 *Figure 4 – DBSCAN clustering of 5 000 randomly sampled listings in the latitude–longitude plane.  Colours represent cluster IDs; noise points are labelled “−1”.  The largest cluster (0) covers the Manhattan/Brooklyn core, while smaller clusters delineate peripheral neighbourhoods such as Staten Island and the Rockaways.*
 
