@@ -82,9 +82,9 @@ This document combines the narrative and results of every analysis chunk into a 
 
 
 
-## Chunk 00: Project Charter & Plan
 
-# Airbnb NYC 2023 Project Charter & Plan (Chunk 0)
+
+# Airbnb NYC 2023 Project Charter & Plan
 
 ## 1 Dataset availability
 
@@ -115,7 +115,7 @@ The Cross‑Industry Standard Process for Data Mining (CRISP‑DM) provides a st
 9. **Modeling** – start with **baselines** (mean and median price) then fit linear models (OLS, Ridge, Lasso) using both raw `price` and `log1p(price)` targets; subsequently build tree‑based ensembles (Random Forest, Gradient Boosting) with appropriate hyperparameters.  Emphasise cross‑validation, hold‑out sets and evaluation metrics (RMSE, MAE, R²).  Explore partial dependence and, if feasible, SHAP explanations.
 10. **Final synthesis** – compile findings into an executive summary with practical recommendations for hosts and policymakers, discuss limitations (e.g., data snapshot, regulation changes in 2023), and provide a reproducibility appendix (software versions, environment specifications, and run steps).
 
-## 4 Chunk schedule (Standard mode)
+## schedule (Standard mode)
 
 To comply with the 12 GB RAM constraint and typical 3–8 minute per‑chunk runtime, we divide the work into manageable chunks and specify compute tactics.  Each chunk will have its own write‑up (`.md` file) saved with a consistent naming convention.
 
