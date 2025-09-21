@@ -171,10 +171,7 @@ Project (Airbnb NYC 2023)
 - **Runtime management:** Each chunk is designed to run within 3–8 minutes.  If operations exceed this, we will either simplify (e.g., reduce features) or postpone heavy analysis to later chunks with sampling.
 
 
-
-## Chunk 01: Business & Data Understanding
-
-# CHUNK 1 – Business & Data Understanding
+# Business & Data Understanding
 
 ## High‑level business context
 
@@ -259,9 +256,9 @@ Project (Airbnb NYC 2023/25)
 
 
 
-## Chunk 02: Data Access & Schema Audit
 
-# CHUNK 2 – Data Access & Schema Audit
+
+# Data Access & Schema Audit
 
 ## Loading the dataset with memory‑efficient dtypes
 
@@ -346,9 +343,7 @@ Project (Airbnb NYC 2023/25)
 
 
 
-## Chunk 03: Exploratory Data Analysis – Univariate
-
-# CHUNK 3 – Univariate Exploratory Data Analysis (EDA)
+# Univariate Exploratory Data Analysis (EDA)
 
 ## Setup
 
@@ -427,9 +422,8 @@ This chunk performed **univariate EDA** on the NYC Airbnb dataset (2023 snapshot
 * **Sampling** – Full data were used here because of the manageable size.  In later chunks (e.g., SHAP analyses), we will sample to respect the 12 GB limit.
 
 
-## Chunk 04: Exploratory Data Analysis – Bivariate & Temporal
 
-# CHUNK 4 – Bivariate & Temporal EDA
+# Bivariate & Temporal EDA
 
 ## Goals
 
@@ -488,9 +482,8 @@ In this chunk we explored **bivariate and temporal relationships**.  We visualis
 * **Temporal aggregation** – Yearly aggregation reduced the number of groups from 138 months to 15 years, allowing a simple trend line without overfitting.  Missing `last_review` entries (31 % of listings) were excluded from temporal analysis.
 
 
-## Chunk 05: Geospatial Exploratory Analysis
 
-# CHUNK 5 – Spatial (Geo) Exploratory Data Analysis
+# Spatial (Geo) Exploratory Data Analysis
 
 ## Objectives
 
@@ -555,9 +548,7 @@ This chunk delivered a **geospatial EDA** of NYC Airbnb listings.  We created he
 * **Memory and CPU usage** – The geospatial analysis was performed on the full dataset (~36 k rows); the computations fit easily within the 12 GB limit (RAM footprint remained <10 MB).  No sampling was required.  All plots were saved at 150 dpi for clarity without excessive file size.
 
 
-## Chunk 06: Cleaning & Pre‑processing
-
-# CHUNK 6 – Data Cleaning & Pre‑processing
+# Data Cleaning & Pre‑processing
 
 ## Objectives
 
@@ -630,9 +621,8 @@ This chunk cleaned and pre‑processed the dataset.  Key steps included dropping
 * The cleaning operations were performed on the full dataset of 21 279 records, consuming ~4 MB of RAM.  Median imputation and feature engineering required negligible compute.  The cleaned dataset is stored as a CSV file (approx. 2 MB), ensuring reproducibility and enabling efficient reloads in later chunks.
 
 
-## Chunk 07: Outlier Analysis & Processing
 
-# CHUNK 7 – Outlier Analysis & Processing
+# Outlier Analysis & Processing
 
 ## Objectives
 
@@ -699,9 +689,8 @@ This chunk identified outliers using the IQR rule, highlighted variables where t
 * All outlier calculations were performed on the 21 279‑row cleaned dataset (approx. 4 MB).  Identifying IQR bounds and computing percentiles required negligible compute.  The capped price variable and updated dataset will be stored for modeling in subsequent chunks.
 
 
-## Chunk 08: Feature Engineering
 
-# CHUNK 8 – Feature Engineering
+# Feature Engineering
 
 ## Objectives
 
@@ -802,9 +791,8 @@ This chunk engineered new features from the cleaned dataset.  We added winsorise
 * Feature engineering was executed on the full dataset (~21 k rows), yielding a 26‑column DataFrame (~5 MB).  Bin assignments and log transformations used vectorised Pandas operations, incurring negligible computational overhead.  The engineered dataset will be used in subsequent modeling steps.
 
 
-## Chunk 09: Feature Selection
 
-# CHUNK 9 – Feature Selection (NYC Airbnb 2023)
+# Feature Selection (NYC Airbnb 2023)
 
 ## Summary
 
@@ -893,9 +881,7 @@ In this chunk we selected features for modelling the log‑capped price of NYC A
 * **Downstream modelling**: The proposed feature set keeps the feature matrix manageable (≈30–40 features), ensuring that linear and tree‑based models run in under ~5–8 minutes with the available compute.
 
 
-## Chunk 10: Modeling – Baselines & Linear
-
-# CHUNK 10 – Baseline & Linear Modeling
+# Baseline & Linear Modeling
 
 ## Objective
 
@@ -978,9 +964,9 @@ This chunk built baseline and linear regression models on the engineered NYC Air
 * **Reproducibility**: A fixed random seed ensured consistent train/test splits.  Hyperparameters (e.g., `α` for Ridge/Lasso) were documented and can be tuned further if needed.
 
 
-## Chunk 11: Modeling – Tree Ensembles
 
-# CHUNK 11 – Tree‐Based Models & Feature Importance
+
+# Tree‐Based Models & Feature Importance
 
 ## Objective
 
@@ -1064,9 +1050,9 @@ In this chunk we implemented tree‑based regression models to predict `log_pric
 *Reproducibility:* Random seeds were fixed for train/test splits and model initialization.  All hyperparameters and data‐processing steps are documented for reproducibility.
 
 
-## Chunk 12: Clustering Analysis
 
-# CHUNK 12 – Clustering Analysis
+
+# Clustering Analysis
 
 ## Objective
 
@@ -1140,9 +1126,9 @@ In this chunk we applied unsupervised clustering to the NYC Airbnb dataset.  K�
 * **Reproducibility:**  Random seeds were fixed for sampling and K‑Means initialization.  DBSCAN results may vary with parameter choice; the selected `eps` and `min_samples` values are documented above.
 
 
-## Chunk 13: Final Synthesis
 
-# CHUNK 13 – Final Synthesis & Recommendations
+
+# Final Synthesis & Recommendations
 
 ## Executive Summary
 
