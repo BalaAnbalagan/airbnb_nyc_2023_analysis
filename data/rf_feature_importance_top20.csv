@@ -1,0 +1,21 @@
+feature,importance
+room_type_Private room,0.29499135616674727
+availability_365,0.09679837903088984
+log_host_listings_count,0.0847255539286921
+calculated_host_listings_count,0.07985989656979013
+minimum_nights_capped,0.04603760645701235
+minimum_nights,0.04558636473053827
+log_minimum_nights,0.04355596615379948
+neighbourhood_group_Manhattan,0.043234594744796545
+days_since_last_review,0.03599960428297627
+log_days_since_last_review,0.034743052755985146
+reviews_per_month,0.02775708346857402
+log_reviews_per_month,0.02723955806508682
+log_number_of_reviews,0.020855606068729292
+number_of_reviews,0.020679568879719154
+log_number_of_reviews_ltm,0.01854332876803153
+number_of_reviews_ltm,0.017553222717978167
+room_type_Shared room,0.014364874665976319
+neighbourhood_group_Brooklyn,0.008734230556105867
+host_listings_bin_2-5,0.006257765705552604
+availability_bin_101-200,0.0038596362999762856
